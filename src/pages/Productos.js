@@ -1,5 +1,6 @@
 import listaProductos from "../data";
 import "./Productos.css"
+import { Link } from "react-router-dom";
 
 function Productos(){
 
@@ -12,7 +13,7 @@ function Productos(){
                         <article key={producto.id}>
                             <h4>{producto.title}</h4>
                             <img src={producto.image} alt={producto.title}/>
-                            <p>Link</p>
+                            <Link to={`/productos/${producto.id}`}>Precio y detalle</Link>
                         </article>
                     )
                 })}
