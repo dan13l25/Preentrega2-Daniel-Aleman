@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/https//dan13l25.github.io/Preentrega2-Daniel-Aleman/static/css/main.e7e2d333.css",
+    "main.js": "/https//dan13l25.github.io/Preentrega2-Daniel-Aleman/static/js/main.cafa8b5c.js",
+    "index.html": "/https//dan13l25.github.io/Preentrega2-Daniel-Aleman/index.html",
+    "main.e7e2d333.css.map": "/https//dan13l25.github.io/Preentrega2-Daniel-Aleman/static/css/main.e7e2d333.css.map",
+    "main.cafa8b5c.js.map": "/https//dan13l25.github.io/Preentrega2-Daniel-Aleman/static/js/main.cafa8b5c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e7e2d333.css",
+    "static/js/main.cafa8b5c.js"
+  ]
+}
