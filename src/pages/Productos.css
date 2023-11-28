@@ -1,3 +1,6 @@
+nav{
+    height: 100px;
+}
 h2{
     margin: 30px 0px 30px 0px;
     text-align: center;
@@ -29,4 +32,17 @@ h4{
 p{
     padding-top: 30px;
     font-size: 25px;
+}
+a{
+    font-size: 45px;
+    background-color: black;
+    text-align: center;
+    width: 90px;
+    margin: 50px 0px 100px 400px;
+    color: white;
+}
+a:hover{
+    color: rgb(0, 26, 255);
+    transition-duration: 0.7s;
+    transform: scale(1.2);
 }

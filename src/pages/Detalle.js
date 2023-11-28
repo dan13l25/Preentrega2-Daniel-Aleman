@@ -3,7 +3,7 @@ import listaProductos from "../data";
 
 function Detalle() {
     const { productoId } = useParams();
-    const detalle = listaProductos.find((producto) => producto.id == productoId);
+    const detalle = listaProductos.find((producto) => producto.id === parseInt(productoId));
   
     // Verificar si 'detalle' está definido
     if (!detalle) {
@@ -11,7 +11,7 @@ function Detalle() {
     }
   
     // Desestructurar 'detalle' solo si está definido
-    const {image, title, price, description} = detalle;
+    const { image, title, price, description } = detalle;
   
     return (
       <div>
@@ -24,5 +24,12 @@ function Detalle() {
       </div>
     );
   }
+  
+  export default Detalle;
 
- export default Detalle 
+
+
+
+
+
+
