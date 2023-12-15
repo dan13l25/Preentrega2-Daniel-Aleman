@@ -1,4 +1,4 @@
-import listaProductos from "../data";
+import listaProductos from "../components/data";
 import "./Productos.css"
 import { Link } from "react-router-dom";
 

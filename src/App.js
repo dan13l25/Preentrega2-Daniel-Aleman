@@ -5,7 +5,8 @@ import Productos from "./pages/Productos";
 import Error from "./pages/Error";
 import Layout from "./pages/Layout";
 import "./App.css"
-import Detalle from "./pages/Detalle";
+import Detalle from "./ItemListContainer/ItemListContainer";
+
 
 function App (){
     return (
