@@ -1,47 +1,34 @@
-import { useParams, Link } from "react-router-dom"
-import { useEffect, useState } from "react";
-import { getDoc,doc } from "firebase/firestore";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 
-function TuComponente() {
-  const { id } = useParams();
-  const [documento, setDocumento] = useState(null);
+const DetalleContext = createContext();
+
+export const DetalleProvider = ({ children }) => {
+  const itemCollectionRef = collection(db, "producto");
+  const [itemList, setItemList] = useState([]);
 
   useEffect(() => {
-    const obtenerDocumento = async () => {
-      try {
-        const docRef = doc(db, "tuColeccion", id);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setDocumento(docSnap.data());
-        } else {
-          console.log("No existe el documento");
-        }
-      } catch (error) {
-        console.error("Error al obtener el documento:", error);
-      }
+    const getItemList = async () => {
+      const data = await getDocs(itemCollectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setItemList(filteredData);
     };
 
-    obtenerDocumento();
-  }, [id]);
+    getItemList();
+  }, [itemCollectionRef]);
 
   return (
-  <div>
-    {documento ? (
-      <div>
-        <h2>{documento.title}</h2>
-        <p>{documento.stock}</p>
-      </div>
-    ) : (
-      <p>Cargando...</p>
-    )}
-    <Link to="/productos">Volver</Link>
-  </div>
-);
-}
+    <DetalleContext.Provider value={{ products: itemList }}>
+      {children}
+    </DetalleContext.Provider>
+  );
+};
 
-
-export default TuComponente;
+export const useDetalle = () => useContext(DetalleContext);
 
 /*function Detalle() {
   /*const itemCollectionRef = collection(db, "producto");
