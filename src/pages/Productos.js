@@ -44,6 +44,7 @@ import { Link } from "react-router-dom";
 
 export const Productos = () => {
   const { products } = useDetalle();
+  
 
   return (
     <>
@@ -57,7 +58,7 @@ export const Productos = () => {
             </div>
             <div className='product-name'>{product.title}</div>
             <div className='product-price'>Rs {product.price}.00</div>
-            <Link to={`/productos/${product.id}`}>Precio y detalle</Link>
+            <Link to={`/detalle/${product.id}`}>Precio y detalle</Link>
           </div>
         ))}
       </div>

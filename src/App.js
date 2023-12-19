@@ -38,6 +38,8 @@ import Error from "./pages/Error";
 import Layout from "./pages/Layout";
 import { DetalleProvider } from "./ItemListContainer/ItemListContainer";
 import "./App.css";
+import { Login } from "./components/Login";
+import { Signup } from "./components/Signup";
 
 function App() {
   return (
@@ -49,7 +51,10 @@ function App() {
               <Route index element={<Home />} />
               <Route path="galeria" element={<Galeria />} />
               <Route path="productos" element={<Productos />} />
+              <Route path="/detalle/:id" component={DetalleProvider} />
               <Route path="*" element={<Error />} />
+              <Route path="Signup" element={Signup} />
+              <Route path="Login" element={Login} />
             </Route>
           </Routes>
         </BrowserRouter>

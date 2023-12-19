@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, limit } from "firebase/firestore";
 import { db } from "../config/firebase";
 
 const DetalleContext = createContext();
@@ -10,7 +10,10 @@ export const DetalleProvider = ({ children }) => {
 
   useEffect(() => {
     const getItemList = async () => {
-      const data = await getDocs(itemCollectionRef);
+      // Aplicar la función limit para limitar la cantidad de documentos recuperados
+      const queryLimited = query(itemCollectionRef, limit(10));
+      
+      const data = await getDocs(queryLimited);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
@@ -29,7 +32,6 @@ export const DetalleProvider = ({ children }) => {
 };
 
 export const useDetalle = () => useContext(DetalleContext);
-
 /*function Detalle() {
   /*const itemCollectionRef = collection(db, "producto");
 
