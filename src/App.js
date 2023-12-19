@@ -33,7 +33,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Galeria from "./pages/Galeria";
-import { Productos } from "./pages/Productos"; // Asegúrate de importar Productos como un named export
+import { Productos } from "./pages/Productos"; 
 import Error from "./pages/Error";
 import Layout from "./pages/Layout";
 import { DetalleProvider } from "./ItemListContainer/ItemListContainer";
@@ -51,7 +51,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="galeria" element={<Galeria />} />
               <Route path="productos" element={<Productos />} />
-              <Route path="/detalle/:id" component={DetalleProvider} />
+              <Route path="detalle/:id" component={DetalleProvider} />
               <Route path="*" element={<Error />} />
               <Route path="Signup" element={Signup} />
               <Route path="Login" element={Login} />

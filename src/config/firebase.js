@@ -1,8 +1,8 @@
-/*import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import "firebase/firestore";
-import "firebase/storage";
-import { getAuth } from "firebase/auth"
+import "firebase/compat/auth";
+import "firebase/compat/database"
+import {getAuth} from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAycDsWtlwzKo1_6aTrCb9ubXFxXCa4DVc",
@@ -14,16 +14,16 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const firestore = getFirestore(app);  // Fixed the firestore initialization
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-export const db = firestore;*/
+export { auth, db };
+/*export const db = firestore;
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import * as firebase from "./firebase";  // Import 'firebase' as a namespace
+import { storage } from "firebase/storage"; // Importa storage directamente
 
-import "firebase/firestore";
-import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "your-api-key",
@@ -37,6 +37,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = firebase.storage();
+const storageData = firebase.storage();
 
-export { auth, db, storage };
+export { auth, db, storage };*/
