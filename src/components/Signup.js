@@ -1,67 +1,90 @@
-import React, { useState } from "react";
-import { auth } from "../config/firebase";
+/*import React, { useState } from "react";
+import { auth, db } from "../config/firebase";
 import { Link } from "react-router-dom";
 
-/*export const Signup = (props) =>{
+/*export const Signup = (props) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const[name, setName]= useState("")
-    const[email, setEmail]= useState("")
-    const[password, setPassword]= useState("")
-    //const[error, setError]= useState("")
-
-    const submit = (e)=>{
-        e.preventDefault()
-        try {
-            const user =  firebase.auth().createUserWithEmailAndPassword(email, password)
-            if(user)
-            {
-                alert("cuenta creada correctamente")
-            }
-        } catch (error) {
-            alert("error")
-        }
-        console.log("regirtrado")
-        auth.createUserWithEmailAndPassword(email, password)(email, password).then((cred)=>{
-            db.collection("SignedupUserData").doc(cred.user.uid).set({
-                name:name,
-                email:email,
-                password:password
-            }).then(()=>{
-                setName("")
-                setEmail("")
-                setPassword("")
-                props.history.push("/login")
-            }).catch(err=>setError(err.message))
-        }).catch(err=>setError(err.message))
-        return(
-        <div className="contenedor">
-            <br/>
-            <h2>Ingrese sus datos</h2>
-            <hr/>
-            <form autoComplete="off" onSubmit={Signup}>
-                <label htmlFor="Name">Nombre</label>
-                <br/>
-                <input type="text" className="form-controll" required onChange={(e)=>setName(e.target.value)} value={name}/>
-                <br/>
-                <label htmlFor="Email">Correo</label>
-                <br/>
-                <input type="email" className="form-controll" required onChange={(e)=>setEmail(e.target.value)} value={email}/>
-                <br/>
-                <label htmlFor="Password">Contraseña</label>
-                <br/>
-                <input type="password" className="form-controll" required onChange={(e)=>setPassword(e.target.value)} value={password}/>
-                <br/>
-                <button type="submit" className="btn btn-succes btn-mdmybtn" onClick={submit}>Registrarse</button>
-            </form> 
-            <br/>
-            <span>Ya tienes una cuenta. Ingresa
-                <Link to="login"> Here</Link>
-            </span>
-        </div>
-    )
+  const submit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      const cred = userCredential.user;
+      await db.collection("SignedupUserData").doc(cred.uid).set({
+        name: name,
+        email: email,
+        password: password,
+      });
+      alert("Cuenta creada correctamente");
+      setName("");
+      setEmail("");
+      setPassword("");
+      props.history.push("/login");
+    } catch (error) {
+      alert("Error al crear la cuenta");
+      console.error(error);
     }
-    
-}*/
+  };
+
+  return (
+    <div className="contenedor">
+      <br />
+      <h2>Ingrese sus datos</h2>
+      <hr />
+      <form autoComplete="off" onSubmit={submit}>
+        <label htmlFor="Name">Nombre</label>
+        <br />
+        <input
+          type="text"
+          className="form-controll"
+          required
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
+        <br />
+        <label htmlFor="Email">Correo</label>
+        <br />
+        <input
+          type="email"
+          className="form-controll"
+          required
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <br />
+        <label htmlFor="Password">Contraseña</label>
+        <br />
+        <input
+          type="password"
+          className="form-controll"
+          required
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        <br />
+        <button
+          type="submit"
+          className="btn btn-success btn-md mybtn"
+          onClick={submit}
+        >
+          Registrarse
+        </button>
+      </form>
+      <br />
+      <span>
+        Ya tienes una cuenta. Ingresa <Link to="/login">Here</Link>
+      </span>
+    </div>
+  );
+};*/
+
+/*
+
 export const Signup = (props) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -70,7 +93,8 @@ export const Signup = (props) => {
     const submit = async (e) => {
       e.preventDefault();
       try {
-        const user = await auth.createUserWithEmailAndPassword(email, password);
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const user = userCredential.user;
         if (user) {
           alert("Cuenta creada correctamente");
         }
@@ -103,9 +127,74 @@ export const Signup = (props) => {
         </form>
         <br />
         <span>
-          Ya tienes una cuenta. Ingresa
-          <Link to="login"> Here</Link>
+          Si ya tienes una cuenta. Ingresa
+          <Link to="/Login"> Here</Link>
         </span>
       </div>
     );
-  };
+  };*/
+
+
+
+
+
+
+
+  import { useState } from "react";
+  import {auth,googleProvider } from "../config/firebase";
+  import { createUserWithEmailAndPassword , signInWithPopup , signOut } from "firebase/auth";
+  
+  function Signup() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+  
+    const handleSignup = async (e) => {
+      e.preventDefault();
+      await createUserWithEmailAndPassword(auth, email, password, name);
+    };
+  
+    const handleSignInWithGoogle = async () => {
+      await signInWithPopup(auth, googleProvider);
+    };
+  
+    const handleLogout = async () => {
+      await signOut(auth);
+    };
+  
+    return (
+      <div>
+        <span>Usuario: {auth?.currentUser?.email}</span>
+        <form onSubmit={handleSignup}>
+          <input
+            type="text"
+            placeholder="Nombre"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button type="submit">Registrate</button>
+        </form>
+  
+        <button onClick={handleSignInWithGoogle}>Ingresar con Google</button>
+        <br />
+        <button onClick={handleLogout}>LogOut</button>
+      </div>
+    );
+  }
+  
+  export default Signup;

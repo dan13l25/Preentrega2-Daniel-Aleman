@@ -10,7 +10,6 @@ export const DetalleProvider = ({ children }) => {
 
   useEffect(() => {
     const getItemList = async () => {
-      // Aplicar la función limit para limitar la cantidad de documentos recuperados
       const queryLimited = query(itemCollectionRef, limit(10));
       
       const data = await getDocs(queryLimited);
@@ -25,9 +24,11 @@ export const DetalleProvider = ({ children }) => {
   }, [itemCollectionRef]);
 
   return (
+    <div>
     <DetalleContext.Provider value={{ products: itemList }}>
       {children}
     </DetalleContext.Provider>
+  </div>
   );
 };
 

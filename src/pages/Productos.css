@@ -46,3 +46,6 @@ a:hover{
     transition-duration: 0.7s;
     transform: scale(1.2);
 }
+.reposteria{
+    width: 500px;
+}
