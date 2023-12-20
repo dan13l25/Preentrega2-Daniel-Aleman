@@ -38,7 +38,7 @@ import Error from "./pages/Error";
 import Layout from "./pages/Layout";
 import { DetalleProvider } from "./ItemListContainer/ItemListContainer";
 import "./App.css";
-import { Login } from "./components/Login";
+import  Login  from "./components/Login";
 import  Signup  from "./components/Signup";
 import { CartContextProvider } from "./components/CartContext";
 
