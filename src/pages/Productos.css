@@ -6,46 +6,54 @@ h2{
     text-align: center;
     font-size: 40px;
 }
-.producto{
+.producto {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 25px;
     column-gap: 25px;
     padding-left: 25px;
     padding-right: 25px;
-}
-article{
+  }
+  
+  .producto .product-img {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-}
-img{
-    width: 600px;
-    height: 700px;
-    object-fit: contain;
-    margin-left: 300px;
-}
-h4{
-    font-size: 30px;
-}
-p{
-    padding-top: 30px;
-    font-size: 25px;
-}
-a{
-    font-size: 45px;
+  }
+  
+  .producto .product-img img {
+    width: 100%; /* Utiliza el 100% del contenedor */
+    max-width: 600px; /* Máximo ancho de 600px */
+    height: auto; /* Ajusta automáticamente la altura según el ancho */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor manteniendo las proporciones */
+    margin-left: auto; /* Centra la imagen horizontalmente */
+    margin-right: auto; /* Centra la imagen horizontalmente */
+  }
+  
+  .producto .product-name {
+    font-size: 1.5rem; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+  }
+  
+  .producto .product-price {
+    font-size: 1.25rem; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+  }
+  
+  .producto a {
+    font-size: 1.5rem; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
     background-color: black;
     text-align: center;
-    width: 290px;
-    margin: 50px 0px 100px 400px;
+    width: 100%; /* O ajusta según sea necesario */
+    margin-top: 15px; /* Añade un espacio superior entre el precio y el enlace */
     color: white;
-}
-a:hover{
+    display: block; /* Hace que el enlace ocupe el ancho completo del contenedor */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    padding: 10px; /* Añade un relleno al enlace */
+    border-radius: 5px; /* Añade bordes redondeados */
+  }
+  
+  .producto a:hover {
     color: rgb(0, 26, 255);
     transition-duration: 0.7s;
-    transform: scale(1.2);
-}
-.reposteria{
-    width: 500px;
-}
+    transform: scale(1.1);
+  }
