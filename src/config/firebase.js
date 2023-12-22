@@ -6,7 +6,7 @@ import {getAuth, GoogleAuthProvider} from "firebase/auth"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAycDsWtlwzKo1_6aTrCb9ubXFxXCa4DVc",
+  apiKey: "AIzaSyAycDsWtlwzKo1_6aTrCb9ubXFxXCa4DVc", 
   authDomain: "entrega-final-68fc4.firebaseapp.com",
   projectId: "entrega-final-68fc4",
   storageBucket: "entrega-final-68fc4.appspot.com",
