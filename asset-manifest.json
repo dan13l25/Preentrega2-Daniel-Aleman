@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Preentrega2-Daniel-Aleman/static/css/main.9239b0f7.css",
-    "main.js": "/Preentrega2-Daniel-Aleman/static/js/main.04aa8ea9.js",
+    "main.css": "/Preentrega2-Daniel-Aleman/static/css/main.8ed55606.css",
+    "main.js": "/Preentrega2-Daniel-Aleman/static/js/main.d3a8950b.js",
     "index.html": "/Preentrega2-Daniel-Aleman/index.html",
-    "main.9239b0f7.css.map": "/Preentrega2-Daniel-Aleman/static/css/main.9239b0f7.css.map",
-    "main.04aa8ea9.js.map": "/Preentrega2-Daniel-Aleman/static/js/main.04aa8ea9.js.map"
+    "main.8ed55606.css.map": "/Preentrega2-Daniel-Aleman/static/css/main.8ed55606.css.map",
+    "main.d3a8950b.js.map": "/Preentrega2-Daniel-Aleman/static/js/main.d3a8950b.js.map"
   },
   "entrypoints": [
-    "static/css/main.9239b0f7.css",
-    "static/js/main.04aa8ea9.js"
+    "static/css/main.8ed55606.css",
+    "static/js/main.d3a8950b.js"
   ]
 }
