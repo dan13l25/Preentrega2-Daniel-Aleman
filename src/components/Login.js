@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { auth,googleProvider } from "../config/firebase";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import "../css/Signup.css"; 
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,26 +21,30 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <button type="submit">Iniciar sesión</button>
-      <br />
-      <button onClick={handleSignInWithGoogle}>Ingresar con Google</button>
-      <br />
-    </form>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleLogin}>
+        <input 
+          type="email"
+          placeholder="Email"
+          value={email}
+          className="login-field"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          className="login-field"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br />
+        <button className="login-button" type="submit">Iniciar sesión</button>
+        <br />
+        <button className="google-login-button" onClick={handleSignInWithGoogle}>Ingresar con Google</button>
+        <br />
+      </form>
+    </div>
   );
 }
 

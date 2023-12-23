@@ -53,7 +53,7 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="galeria" element={<Galeria />} />
                 <Route path="productos" element={<Productos />} />
-                <Route path="/productoS/:id" component={<DetallesProducto />} /> 
+                <Route path="/productos/:id" component={<DetallesProducto />} /> 
                 <Route path="*" element={<Error />} />
                 <Route path="Signup" element={<Signup/>} />
                 <Route path="Login" element={<Login/>} />
@@ -66,3 +66,5 @@ function App() {
 }
 
 export default App;
+
+

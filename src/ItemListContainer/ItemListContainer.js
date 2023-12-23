@@ -1,47 +1,3 @@
-/*import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
-import { getDocs, collection, query, limit } from "firebase/firestore";
-import { db } from "../config/firebase";
-
-const DetalleContext = createContext();
-
-export const DetalleProvider = ({ children }) => {
-  const itemCollectionRef = useMemo(() => collection(db, "producto"), []); 
-  const [itemList, setItemList] = useState([]);
-
-  useEffect(() => {
-    const getItemList = async () => {
-      const queryLimited = query(itemCollectionRef, limit(10));
-
-      try {
-        const data = await getDocs(queryLimited);
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setItemList(filteredData);
-
-        console.log("Lista de productos:", filteredData);
-      } catch (error) {
-        console.error("Error al obtener la lista de productos:", error.message);
-      }
-    };
-
-    getItemList();
-  }, [itemCollectionRef]);
-
-  return (
-    <div>
-      <DetalleContext.Provider value={{ products: itemList }}>
-        {children}
-      </DetalleContext.Provider>
-    </div>
-  );
-};
-
-export const useDetalle = () => useContext(DetalleContext);*/
-
-
-
 
 
 /*import React from "react";
@@ -76,50 +32,44 @@ export const DetalleProvider = () => {
 export const useDetalle = () => useContext(DetalleContext);*/
 
 
-
-
-import React, { useState, useEffect } from "react";
-import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import React from "react";
+import { useParams } from "react-router-dom";
+import ItemDetail from "./ItemDetail";
+
 
 const DetallesProducto = ({ match }) => {
-  const productId = match.params.id;
-  const [productDetails, setProductDetails] = useState(null);
+  const [producto, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { itemId } = useParams();
 
   useEffect(() => {
-    const getProductDetails = async () => {
-      const productRef = collection(db, "producto", productId);
-      const productDoc = await getDocs(productRef);
-
-      if (productDoc.exists()) {
-        setProductDetails({
-          id: productDoc.id,
-          ...productDoc.data(),
-        });
-      } else {
-        // Manejar el caso en el que el producto no existe
-        console.log("Producto no encontrado");
-      }
-    };
-
-    getProductDetails();
-  }, [productId]);
+    setLoading(true);
+    const docRef = doc (db, "producto", itemId);
+    getDoc(docRef)
+      .then((response) => {
+        const data = response.data();
+        console.log("Producto obtenido:", data)
+        const productAdapted = { id: response.id, ...data };
+        setProduct(productAdapted);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [itemId]);
 
   return (
     <div>
-      <h2>Detalles del Producto</h2>
-      {productDetails ? (
-        <div>
-          <h2>{productDetails.title}</h2>
-          <img src={productDetails.image} alt={productDetails.title} />
-          <h3>$ {productDetails.price}</h3>
-          {/* Puedes mostrar otros detalles del producto aquí */}
-        </div>
+      {loading ? (
+        <p>Loading...</p>
       ) : (
-        <p>Cargando detalles del producto...</p>
+        producto && <ItemDetail {...producto} />
       )}
-      <Link to="/productos">Volver a la lista de productos</Link>
     </div>
   );
 };

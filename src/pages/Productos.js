@@ -75,6 +75,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import "./Productos.css"
+
 
 
 function Productos() {
@@ -98,16 +100,16 @@ function Productos() {
   }, [itemList]); 
 
   return (
-    <div className="productos">
-      {itemList.map((item) => (
-        <div key={item.id}>
-          <h2>{item.title}</h2>
-          <img src={item.image} alt= {item.title}/>
-          <h3>$ {item.price}</h3>
-          <Link to={`/producto/${item.id}`}>Detalle del producto</Link>
-        </div>
-      ))}
-    </div>
+    <div className="gridContainerStyle">
+    {itemList.map((item) => (
+      <div key={item.id} className="itemStyle">
+        <h2>{item.title}</h2> 
+        <img src={item.image} alt={item.title} className="imageStyle"/>
+        <h3>$ {item.price}</h3>
+        <Link to={`/producto/${item.id}`}>Detalle del producto</Link>
+      </div>
+    ))}
+  </div>
   );
 }
 

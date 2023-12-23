@@ -1,6 +1,4 @@
-nav{
-    height: 100px;
-}
+
 h2{
     margin: 30px 0px 30px 0px;
     text-align: center;
@@ -23,33 +21,33 @@ h2{
   }
   
   .producto .product-img img {
-    width: 100%; /* Utiliza el 100% del contenedor */
-    max-width: 600px; /* Máximo ancho de 600px */
-    height: auto; /* Ajusta automáticamente la altura según el ancho */
-    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor manteniendo las proporciones */
-    margin-left: auto; /* Centra la imagen horizontalmente */
-    margin-right: auto; /* Centra la imagen horizontalmente */
+    width: 100%; 
+    max-width: 600px; 
+    height: auto; 
+    object-fit: cover; 
+    margin-left: auto; 
+    margin-right: auto; 
   }
   
   .producto .product-name {
-    font-size: 1.5rem; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+    font-size: 1.5rem; 
   }
   
   .producto .product-price {
-    font-size: 1.25rem; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+    font-size: 1.25rem; 
   }
   
   .producto a {
-    font-size: 1.5rem; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+    font-size: 1.5rem; 
     background-color: black;
     text-align: center;
-    width: 100%; /* O ajusta según sea necesario */
-    margin-top: 15px; /* Añade un espacio superior entre el precio y el enlace */
+    width: 100%; 
+    margin-top: 15px; 
     color: white;
-    display: block; /* Hace que el enlace ocupe el ancho completo del contenedor */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    padding: 10px; /* Añade un relleno al enlace */
-    border-radius: 5px; /* Añade bordes redondeados */
+    display: block; 
+    text-decoration: none; 
+    padding: 10px; 
+    border-radius: 5px; 
   }
   
   .producto a:hover {
@@ -57,3 +55,31 @@ h2{
     transition-duration: 0.7s;
     transform: scale(1.1);
   }
+
+.gridContainerStyle{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 25px;
+  column-gap: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.itemStyle {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.imageStyle {
+  width: 100%; /* Ajustar el tamaño de las imágenes según sea necesario */
+  height: auto;
+  border-radius: 8px;
+}
+
+
+
+
+
+
